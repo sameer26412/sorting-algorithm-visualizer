@@ -8,7 +8,9 @@ A sleek, modern visualization tool for various sorting algorithms implemented in
 -------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+
 ✨ Key Features
+
 1.Modern UI: Built with customtkinter for a professional, glossy dark-mode experience.
 
 2.Algorithm Variety: Visualize Bubble, Quick, Insertion, Selection, and Merge Sort.
@@ -18,20 +20,23 @@ A sleek, modern visualization tool for various sorting algorithms implemented in
 4.Real-time Controls: Adjust dataset size and animation speed on the fly.
 
 5.Live Stats: Track comparison counts and time complexity in the header.
+
 ------------------------------------------------------------------------------------------------------------------------------------
 🚀 Getting Started
 ------------------------------------------------------------------------------------------------------------------------------------
+
 Follow these simple steps to get the visualizer running on your machine
 
 ///-Prerequisites-///
+
 Ensure you have Python 3.10+ installed on your system.
 
 ///-Installation-///
+
 Clone this repository to your local machine:
 
 git clone https://github.com/sameer26412/sorting-algorithm-visualizer.git
-
-cd sorting-algorithm-visualizer
+  cd sorting-algorithm-visualizer
 -------------------------------------------------------------------------------------------------------------------------------------
 ///-Install the required dependencies-///
 
@@ -46,11 +51,13 @@ Execute the following command in your terminal:
 python main.py
 ```
 --------------------------------------------------------------------------------------------------------------------------------------
+
 🛠️ Built With
 
 1.Python - The logic backend.
 
 2.CustomTkinter - For the modern, responsive graphical user interface.
+
 --------------------------------------------------------------------------------------------------------------------------------------
 📸 Screenshots
 
