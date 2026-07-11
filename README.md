@@ -3,6 +3,10 @@
 A sleek, modern visualization tool for various sorting algorithms implemented in Python. This project allows you to observe how different algorithms process data in real-time with a clean, dark-mode user interface.
 
 📸 Preview
+-------------------------------------------
+![Sorting Visualizer](demo/sorting_demo.gif)
+-------------------------------------------
+
 
 ✨ Key Features
 1. Modern UI: Built with customtkinter for a professional, glossy dark-mode experience.
@@ -13,26 +17,30 @@ A sleek, modern visualization tool for various sorting algorithms implemented in
 
 🚀 Getting Started
 
+--------Follow these simple steps to get the visualizer running on your machine-------
 
+----- Prerequisites ------
+### Ensure you have Python 3.10+ installed on your system.
 
-***Follow these simple steps to get the visualizer running on your machine.***
+----- Installation -----
+Clone this repository to your local machine:
 
-## Prerequisites ##
-_Ensure you have Python 3.10+ installed on your system.
+git clone https://github.com/sameer26412/sorting-algorithm-visualizer.git
+cd sorting-algorithm-visualizer
 
-## Installation ##
-_Clone this repository to your local machine:
+----- Install the required dependencies -----
 
-*git clone https://github.com/YOUR\_USERNAME/YOUR\_REPO\_NAME.git
-  cd YOUR\_REPO\_NAME
+```bash
+pip install customtkinter matplotlib
+```
 
-## Install the required dependencies ##
+----- Run the Application -----
 
-## Run the Application ##
+### Execute the following command in your terminal:
 
-_Execute the following command in your terminal:
-
-"python main.py"
+```bash
+python main.py
+```
 
 🛠️ Built With
 
@@ -40,4 +48,19 @@ _Execute the following command in your terminal:
 2.CustomTkinter - For the modern, responsive graphical user interface.
 
 📸 Screenshots
+### Home Screen
+
+![Home Screen](screenshots/home.png)
+
+-----------
+
+![Bubble-sort](screenshots/bubble-sort-bg.png)
+
+-----------
+
+![Insertion_sort](screenshots/insertion-sort-sp.png)
+
+-----------
+
+![Merge-sort](screenshots/merge-sort-sg.png)
 
