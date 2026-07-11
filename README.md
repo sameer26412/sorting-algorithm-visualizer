@@ -36,7 +36,7 @@ Ensure you have Python 3.10+ installed on your system.
 Clone this repository to your local machine:
 
 git clone https://github.com/sameer26412/sorting-algorithm-visualizer.git
-  cd sorting-algorithm-visualizer
+     cd sorting-algorithm-visualizer
 -------------------------------------------------------------------------------------------------------------------------------------
 ///-Install the required dependencies-///
 
