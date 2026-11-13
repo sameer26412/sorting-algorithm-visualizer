@@ -58,7 +58,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Custom Subtle Scrollbar for Array Footer */
+        /* Custom Subtle Scrollbar */
         ::-webkit-scrollbar {
             width: 4px;
             height: 4px;
@@ -210,15 +210,16 @@
         }
     </style>
 </head>
-<body class="h-screen w-screen overflow-hidden flex flex-col justify-between select-none bg-charcoal-900 text-offwhite-100">
+<!-- MOBILE FIX 1: min-h-screen + overflow-y-auto on mobile; locked lg:h-screen + lg:overflow-hidden on desktop -->
+<body class="min-h-screen lg:h-screen w-full overflow-x-hidden overflow-y-auto lg:overflow-hidden flex flex-col justify-between select-none bg-charcoal-900 text-offwhite-100">
 
     <!-- Minimalist Top Header -->
-    <header class="border-b border-charcoal-700 bg-charcoal-900/95 px-4 lg:px-6 py-2.5 shrink-0 z-30">
-        <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-3">
+    <header class="border-b border-charcoal-700 bg-charcoal-900/95 px-4 lg:px-6 py-2.5 shrink-0 z-30 sticky top-0 lg:static backdrop-blur-md">
+        <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2.5">
             
             <!-- Left: Brand Identity -->
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-offwhite-100 text-charcoal-900 flex items-center justify-center font-mono font-bold text-sm shadow-sm">
+                <div class="w-8 h-8 rounded-lg bg-offwhite-100 text-charcoal-900 flex items-center justify-center font-mono font-bold text-sm shadow-sm shrink-0">
                     <i data-lucide="bar-chart-2" class="w-4 h-4 stroke-[2.5]"></i>
                 </div>
                 <div>
@@ -229,23 +230,13 @@
                 </div>
             </div>
 
-            <!-- Center: Algorithm Selector Tabs -->
-            <nav class="flex items-center bg-charcoal-800 p-1 rounded-xl border border-charcoal-700 overflow-x-auto max-w-full" id="algoTabs" aria-label="Sorting Algorithms">
-                <button data-algo="bubble" class="algo-tab active px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400">Bubble</button>
-                <button data-algo="selection" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400">Selection</button>
-                <button data-algo="insertion" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400">Insertion</button>
-                <button data-algo="merge" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400">Merge</button>
-                <button data-algo="quick" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400">Quick</button>
-                <button data-algo="heap" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400">Heap</button>
-            </nav>
-
             <!-- Right: Live Telemetry Pills & Audio Toggle -->
-            <div class="flex items-center gap-2 sm:gap-3 font-mono text-xs">
-                <div class="hidden xl:flex items-center gap-1.5 bg-charcoal-800 px-2.5 py-1 rounded-lg border border-charcoal-700" title="Comparisons">
+            <div class="flex items-center gap-2 sm:gap-3 font-mono text-xs order-2 lg:order-3">
+                <div class="hidden sm:flex items-center gap-1.5 bg-charcoal-800 px-2.5 py-1 rounded-lg border border-charcoal-700" title="Comparisons">
                     <span class="text-offwhite-400 text-[11px]">CMP:</span>
                     <span id="metricComparisons" class="text-amberAccent font-semibold">0</span>
                 </div>
-                <div class="hidden xl:flex items-center gap-1.5 bg-charcoal-800 px-2.5 py-1 rounded-lg border border-charcoal-700" title="Swaps or Array Writes">
+                <div class="hidden sm:flex items-center gap-1.5 bg-charcoal-800 px-2.5 py-1 rounded-lg border border-charcoal-700" title="Swaps or Array Writes">
                     <span class="text-offwhite-400 text-[11px]">SWP:</span>
                     <span id="metricSwaps" class="text-coralSwap font-semibold">0</span>
                 </div>
@@ -253,7 +244,7 @@
                     <i data-lucide="clock" class="w-3.5 h-3.5 text-offwhite-400"></i>
                     <span id="metricTime" class="text-offwhite-100 font-semibold">0.0s</span>
                 </div>
-                <div class="hidden sm:flex items-center gap-1.5 bg-charcoal-800 px-2.5 py-1 rounded-lg border border-charcoal-700" title="Average Time & Space Complexity">
+                <div class="hidden xl:flex items-center gap-1.5 bg-charcoal-800 px-2.5 py-1 rounded-lg border border-charcoal-700" title="Average Time & Space Complexity">
                     <span id="headerComplexityBadge" class="text-offwhite-200 text-[11px]">Time: O(n²) · Space: O(1)</span>
                 </div>
                 <button id="soundToggleBtn" title="Toggle Web Audio Synthesizer" class="btn-interactive p-1.5 rounded-lg bg-charcoal-800 hover:bg-charcoal-700 text-offwhite-300 border border-charcoal-700">
@@ -261,14 +252,24 @@
                 </button>
             </div>
 
+            <!-- Center: Algorithm Selector Tabs (Full width scrollable row on mobile, centered on desktop) -->
+            <nav class="w-full lg:w-auto order-3 lg:order-2 flex items-center justify-start lg:justify-center bg-charcoal-800 p-1 rounded-xl border border-charcoal-700 overflow-x-auto" id="algoTabs" aria-label="Sorting Algorithms">
+                <button data-algo="bubble" class="algo-tab active px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400 shrink-0">Bubble</button>
+                <button data-algo="selection" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400 shrink-0">Selection</button>
+                <button data-algo="insertion" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400 shrink-0">Insertion</button>
+                <button data-algo="merge" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400 shrink-0">Merge</button>
+                <button data-algo="quick" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400 shrink-0">Quick</button>
+                <button data-algo="heap" class="algo-tab px-3 py-1 rounded-lg text-xs font-medium text-offwhite-400 shrink-0">Heap</button>
+            </nav>
+
         </div>
     </header>
 
-    <!-- Single-Screen Main Content Grid -->
-    <main class="max-w-[1600px] w-full mx-auto px-4 lg:px-6 py-3 flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-4 overflow-hidden">
+    <!-- MOBILE FIX 2: Auto-height on mobile so nothing clips, locked overflow-hidden grid on desktop -->
+    <main class="max-w-[1600px] w-full mx-auto px-3 sm:px-4 lg:px-6 py-3 flex-1 lg:min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:overflow-hidden">
 
-        <!-- Left Control Column (4 Columns on Desktop) -->
-        <aside class="lg:col-span-4 flex flex-col gap-3 min-h-0 overflow-y-auto pr-0.5">
+        <!-- Left Control Column (Order 2 on mobile so canvas is seen first, Order 1 on desktop) -->
+        <aside class="order-2 lg:order-1 lg:col-span-4 flex flex-col gap-3 lg:min-h-0 lg:overflow-y-auto pr-0.5">
 
             <!-- Card 1: Execution & Playback Controls -->
             <div class="charcoal-card rounded-xl p-3.5 shrink-0">
@@ -407,10 +408,10 @@
 
         </aside>
 
-        <!-- Right Compact Array Visualization Stage (8 Columns on Desktop) -->
-        <section class="lg:col-span-8 flex flex-col min-h-0 h-full">
+        <!-- MOBILE FIX 3: Order 1 on mobile so the sorting bars appear at the top of the phone screen, with guaranteed min-height -->
+        <section class="order-1 lg:order-2 lg:col-span-8 flex flex-col min-h-[340px] sm:min-h-[400px] lg:min-h-0 lg:h-full">
 
-            <div class="charcoal-card rounded-xl p-4 flex-1 flex flex-col justify-between min-h-0 relative overflow-hidden">
+            <div class="charcoal-card rounded-xl p-3.5 sm:p-4 flex-1 flex flex-col justify-between min-h-[340px] sm:min-h-[400px] lg:min-h-0 relative overflow-hidden">
                 
                 <!-- Subtle Charcoal Dot Matrix Background -->
                 <div class="absolute inset-0 opacity-[0.12] pointer-events-none"
@@ -427,17 +428,17 @@
                     </div>
 
                     <!-- Color Legend -->
-                    <div class="flex items-center gap-3 text-[11px] font-mono text-offwhite-400 shrink-0">
-                        <span class="flex items-center gap-1.5"><i class="w-2.5 h-2.5 rounded-sm bg-offwhite-100 inline-block"></i> Unsorted</span>
-                        <span class="flex items-center gap-1.5"><i class="w-2.5 h-2.5 rounded-sm bg-amberAccent inline-block"></i> Compare</span>
-                        <span class="flex items-center gap-1.5"><i class="w-2.5 h-2.5 rounded-sm bg-coralSwap inline-block"></i> Swap/Write</span>
-                        <span class="flex items-center gap-1.5"><i class="w-2.5 h-2.5 rounded-sm bg-purple-400 inline-block"></i> Pivot/Key</span>
-                        <span class="flex items-center gap-1.5"><i class="w-2.5 h-2.5 rounded-sm bg-sageSorted inline-block"></i> Sorted</span>
+                    <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 text-[10px] sm:text-[11px] font-mono text-offwhite-400 shrink-0">
+                        <span class="flex items-center gap-1"><i class="w-2.5 h-2.5 rounded-sm bg-offwhite-100 inline-block"></i> Unsorted</span>
+                        <span class="flex items-center gap-1"><i class="w-2.5 h-2.5 rounded-sm bg-amberAccent inline-block"></i> Compare</span>
+                        <span class="flex items-center gap-1"><i class="w-2.5 h-2.5 rounded-sm bg-coralSwap inline-block"></i> Swap</span>
+                        <span class="flex items-center gap-1"><i class="w-2.5 h-2.5 rounded-sm bg-purple-400 inline-block"></i> Pivot</span>
+                        <span class="flex items-center gap-1"><i class="w-2.5 h-2.5 rounded-sm bg-sageSorted inline-block"></i> Sorted</span>
                     </div>
                 </div>
 
-                <!-- Compact Array Bars Container (Fits 100% in Single Screen) -->
-                <div id="barsContainer" class="relative z-10 flex-1 min-h-0 max-h-[54vh] my-auto flex items-end justify-center gap-[2px] sm:gap-[3px] pt-7 pb-1 px-2">
+                <!-- MOBILE FIX 4: Explicit h-[240px] sm:h-[300px] on mobile/tablet so bars never collapse to 0px; flex-1 on desktop -->
+                <div id="barsContainer" class="relative z-10 w-full h-[240px] sm:h-[300px] lg:h-auto lg:flex-1 lg:min-h-0 lg:max-h-[54vh] my-auto flex items-end justify-center gap-[2px] sm:gap-[3px] pt-7 pb-1 px-1 sm:px-2">
                     <!-- Bars dynamically rendered here -->
                 </div>
 
@@ -460,10 +461,10 @@
     </main>
 
     <!-- Minimalist Single-Line Footer -->
-    <footer class="border-t border-charcoal-800 bg-charcoal-950 px-6 py-1.5 text-[11px] font-mono text-offwhite-500 shrink-0">
-        <div class="max-w-[1600px] mx-auto flex items-center justify-between">
+    <footer class="border-t border-charcoal-800 bg-charcoal-950 px-4 sm:px-6 py-1.5 text-[10px] sm:text-[11px] font-mono text-offwhite-500 shrink-0">
+        <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2">
             <span>Interactive Sorting Studio</span>
-            <span class="text-offwhite-400">github.com/sameer26412/sorting-algorithm-visualizer</span>
+            <span class="text-offwhite-400 truncate">github.com/sameer26412/sorting-algorithm-visualizer</span>
         </div>
     </footer>
 
@@ -637,7 +638,8 @@
         function renderBars(arr, activeIndices = {}, sortedSet = new Set()) {
             barsContainer.innerHTML = '';
             const maxVal = Math.max(...arr, 1);
-            const showNumbers = arr.length <= 36;
+            const isMobile = window.innerWidth < 640;
+            const showNumbers = isMobile ? arr.length <= 18 : arr.length <= 36;
 
             arr.forEach((val, idx) => {
                 const heightPct = Math.max(6, Math.round((val / maxVal) * 100));
@@ -654,12 +656,12 @@
                     stateClass = 'bar-sorted';
                 }
 
-                bar.className = `array-bar ${stateClass} flex-1 flex flex-col items-center justify-end relative`;
+                bar.className = `array-bar ${stateClass} flex-1 min-w-[2px] flex flex-col items-center justify-end relative`;
                 bar.style.height = `${heightPct}%`;
 
                 if (showNumbers) {
                     const label = document.createElement('span');
-                    label.className = 'text-[10px] font-mono font-semibold text-offwhite-200 -top-4 absolute select-none tracking-tighter';
+                    label.className = 'text-[9px] sm:text-[10px] font-mono font-semibold text-offwhite-200 -top-4 absolute select-none tracking-tighter';
                     label.textContent = val;
                     bar.appendChild(label);
                 }
@@ -1227,9 +1229,17 @@
             setTimeout(() => { copyBtn.innerHTML = prev; }, 1400);
         });
 
+        window.addEventListener('resize', () => {
+            if (!state.isSorting) {
+                renderBars(state.workingArray);
+            }
+        });
+
         window.onload = () => {
             updateSpeedLabel();
-            generateDataset('random', 28);
+            const initialCount = window.innerWidth < 640 ? 18 : 28;
+            sizeSlider.value = initialCount;
+            generateDataset('random', initialCount);
         };
     </script>
 </body>
