@@ -32,13 +32,19 @@ An interactive, single-screen **Sorting Algorithm Visualizer** designed for the 
 
 ## 📸 Screenshots & Visuals
 
-| Main Workspace & Controls | Active Partitioning & Comparisons | 
-| ----- | ----- | 
-|  |  | 
+| Animated Sorting Showcase | 
+![Demo](assets/sorting-demo.svg)
 
-| Custom Dataset & Complexity Telemetry | Animated Sorting Showcase | 
-| ----- | ----- | 
-|  |  | 
+| Main Workspace & Controls | 
+![Overview](assets/screenshot-overview.svg)
+
+| Active Partitioning & Comparisons | 
+![Comparison](assets/screenshot-comparison.svg)
+
+|Custom Dataset & Complexity Telemetry| 
+![Custom data](assets/screenshot-custom-data.svg)
+
+
 
 ## 🧮 Algorithm Complexity Reference
 
