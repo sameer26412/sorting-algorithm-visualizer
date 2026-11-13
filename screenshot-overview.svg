@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+    <rect width="800" height="420" rx="12" fill="#121212" stroke="#2A2A2A" stroke-width="2"/>
+    <rect width="800" height="44" rx="12" fill="#1A1A1A"/>
+    <text x="24" y="27" fill="#F5F5F0" font-family="sans-serif" font-size="13" font-weight="bold">Sorting Algorithm Visualizer — Single-Screen 100vh Layout</text>
+    <rect x="18" y="60" width="230" height="340" rx="8" fill="#1A1A1A" stroke="#2A2A2A"/>
+    <rect x="32" y="78" width="202" height="30" rx="6" fill="#F5F5F0"/>
+    <text x="98" y="97" fill="#121212" font-family="sans-serif" font-size="11" font-weight="bold">Start Sort</text>
+    <rect x="32" y="122" width="202" height="80" rx="6" fill="#121212" stroke="#2A2A2A"/>
+    <text x="44" y="145" fill="#A0A09C" font-family="monospace" font-size="10">PRESET DISTRIBUTIONS</text>
+    <text x="44" y="170" fill="#F5F5F0" font-family="monospace" font-size="10">Random | Nearly | Reversed</text>
+    <rect x="264" y="60" width="518" height="340" rx="8" fill="#1A1A1A" stroke="#2A2A2A"/>
+    <g fill="#F5F5F0">
+        <rect x="295" y="270" width="24" height="90" rx="2"/>
+        <rect x="330" y="190" width="24" height="170" rx="2"/>
+        <rect x="365" y="310" width="24" height="50" rx="2"/>
+        <rect x="400" y="140" width="24" height="220" rx="2"/>
+        <rect x="435" y="230" width="24" height="130" rx="2"/>
+        <rect x="470" y="110" width="24" height="250" rx="2"/>
+        <rect x="505" y="250" width="24" height="110" rx="2"/>
+        <rect x="540" y="170" width="24" height="190" rx="2"/>
+        <rect x="575" y="290" width="24" height="70" rx="2"/>
+        <rect x="610" y="125" width="24" height="235" rx="2"/>
+        <rect x="645" y="210" width="24" height="150" rx="2"/>
+        <rect x="680" y="155" width="24" height="205" rx="2"/>
+        <rect x="715" y="95" width="24" height="265" rx="2"/>
+    </g>
+</svg>
